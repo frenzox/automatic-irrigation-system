@@ -21,7 +21,15 @@ remduplicates = $(strip $(if $1,$(firstword $1) $(call remduplicates,$(filter-ou
 C_SOURCE_FILES += \
 $(abspath ../common/main.c) \
 $(abspath system.c) \
-$(abspath hal.c)
+$(abspath hal.c) \
+$(abspath FreeRTOS/Source/croutine.c) \
+$(abspath FreeRTOS/Source/event_groups.c) \
+$(abspath FreeRTOS/Source/list.c) \
+$(abspath FreeRTOS/Source/queue.c) \
+$(abspath FreeRTOS/Source/timers.c) \
+$(abspath FreeRTOS/Source/tasks.c) \
+$(abspath FreeRTOS/Source/portable/MemMang/heap_4.c) \
+$(abspath FreeRTOS/Source/port.c)
 
 # asm source files
 ASM_SOURCE_FILES += \
@@ -36,6 +44,7 @@ INC_PATHS += -I$(abspath CMSIS/Device/ST/)
 INC_PATHS += -I$(abspath CMSIS/Device/ST/STM32F1xx/Include/)
 INC_PATHS += -I$(abspath CMSIS/Include/)
 INC_PATHS += -I$(abspath ../common/)
+INC_PATHS += -I$(abspath FreeRTOS/Source/include/)
 
 OBJECT_DIRECTORY = .build
 LISTING_DIRECTORY = $(OBJECT_DIRECTORY)
@@ -45,14 +54,14 @@ OUTPUT_BINARY_DIRECTORY = $(OBJECT_DIRECTORY)
 BUILD_DIRECTORIES := $(sort $(OBJECT_DIRECTORY) $(OUTPUT_BINARY_DIRECTORY) $(LISTING_DIRECTORY) )
 
 #flags common to all targets
-CFLAGS  = -DSTM32F103C8T6
+CFLAGS  = -DSTM32F103x6
 CFLAGS += -mcpu=cortex-m3
 CFLAGS += -mthumb -mabi=aapcs --std=gnu99
 CFLAGS += -Wall -Werror -O0
 CFLAGS += -mfloat-abi=soft
 # keep every function in separate section. This will allow linker to dump unused functions
 CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
-CFLAGS += -flto -fno-builtin
+CFLAGS += -fno-builtin
 CFLAGS += -g
 
 # keep every function in separate section. This will allow linker to dump unused functions
