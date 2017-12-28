@@ -1,11 +1,10 @@
 #include "hal.h"
 #include "stm32f1xx.h"
-
+/*
 static __IO uint32_t us_ticks;
 
 static void delay_init() {
-    SystemCoreClockUpdate();
-    SysTick_Config(SystemCoreClock/1E6);
+    while(SysTick_Config(SystemCoreClock/1000000) != 0){};
 }
 
 void delay_us(uint32_t us) {
@@ -15,7 +14,7 @@ void delay_us(uint32_t us) {
 
 void delay_ms(uint32_t ms) {
     while(ms--)
-        delay_us(1E3);
+        delay_us(1000);
 }
 
 void SysTick_Handler() {
@@ -24,5 +23,5 @@ void SysTick_Handler() {
 }
 
 void init_hal() {
-    delay_init();
 }
+*/
