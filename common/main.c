@@ -1,19 +1,14 @@
-#include <stm32f1xx.h>
-
 #include "hal.h"
 #include "FreeRTOS.h"
 #include "timers.h"
 #include "task.h"
 
-#define LED_PIN 5
-#define LED_ON() GPIOA->ODR |= (1 << LED_PIN)
-#define LED_OFF() GPIOA->ODR &= (~(1 << LED_PIN))
-
 void blink_task(void *pvParameters) {
+    int32_t sensor_value;
     while(1) {
-        LED_ON();
-        vTaskDelay(1000/portTICK_PERIOD_MS);
-        LED_OFF();
+        toggle_pin(5);
+        sensor_value = read_top_moisture_sensor();
+        printf("SENSOR VALUE: %d\n", sensor_value);
         vTaskDelay(1000/portTICK_PERIOD_MS);
     }
 
@@ -22,16 +17,12 @@ void blink_task(void *pvParameters) {
 
 int main() {
 
-    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
-    GPIOA->CRL = (1 << 20); // SET OUTPUT MODE
+    init_hal();
+    adc_init();
 
-    LED_ON();
-    BaseType_t result = xTaskCreate(blink_task, "blink_task", 128, NULL, 1, NULL);
-    LED_OFF();
-    if(result != pdPASS)
-        LED_ON();
+    xTaskCreate(blink_task, "blink_task", 128, NULL, 1, NULL);
     vTaskStartScheduler();
-    while(1){}
+
     return 0;
 }
 
