@@ -7,8 +7,10 @@ void blink_task(void *pvParameters) {
     int32_t sensor_value;
     while(1) {
         toggle_pin(5);
-        sensor_value = read_top_moisture_sensor();
-        printf("SENSOR VALUE: %d\n", sensor_value);
+        sensor_value = read_analog_input(0);
+        printf("SENSOR 1 VALUE: %d\n", sensor_value);
+        sensor_value = read_analog_input(1);
+        printf("SENSOR 2 VALUE: %d\n", sensor_value);
         vTaskDelay(1000/portTICK_PERIOD_MS);
     }
 
