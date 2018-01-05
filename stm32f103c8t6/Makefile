@@ -29,7 +29,9 @@ $(abspath FreeRTOS/Source/queue.c) \
 $(abspath FreeRTOS/Source/timers.c) \
 $(abspath FreeRTOS/Source/tasks.c) \
 $(abspath FreeRTOS/Source/portable/MemMang/heap_4.c) \
-$(abspath FreeRTOS/Source/port.c)
+$(abspath FreeRTOS/Source/port.c) \
+$(abspath SEGGER/SEGGER_RTT.c) \
+$(abspath SEGGER/SEGGER_RTT_printf.c)
 
 # asm source files
 ASM_SOURCE_FILES += \
@@ -45,6 +47,7 @@ INC_PATHS += -I$(abspath CMSIS/Device/ST/STM32F1xx/Include/)
 INC_PATHS += -I$(abspath CMSIS/Include/)
 INC_PATHS += -I$(abspath ../common/)
 INC_PATHS += -I$(abspath FreeRTOS/Source/include/)
+INC_PATHS += -I$(abspath SEGGER/)
 
 OBJECT_DIRECTORY = .build
 LISTING_DIRECTORY = $(OBJECT_DIRECTORY)
