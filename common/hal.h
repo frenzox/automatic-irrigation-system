@@ -2,6 +2,7 @@
 #define HAL_H
 #include "stm32f1xx.h"
 
+#define PUMP            5
 #define TOP_SENSOR      0
 #define BOTTOM_SENSOR   1
 #define TOP_VALVE       0

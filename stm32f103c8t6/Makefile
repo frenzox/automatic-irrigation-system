@@ -20,6 +20,7 @@ remduplicates = $(strip $(if $1,$(firstword $1) $(call remduplicates,$(filter-ou
 # c source files
 C_SOURCE_FILES += \
 $(abspath ../common/main.c) \
+$(abspath ../common/behavior.c) \
 $(abspath system.c) \
 $(abspath hal.c) \
 $(abspath FreeRTOS/Source/croutine.c) \
@@ -46,6 +47,7 @@ INC_PATHS += -I$(abspath CMSIS/Device/ST/)
 INC_PATHS += -I$(abspath CMSIS/Device/ST/STM32F1xx/Include/)
 INC_PATHS += -I$(abspath CMSIS/Include/)
 INC_PATHS += -I$(abspath ../common/)
+INC_PATHS += -I$(abspath ../lib/SimpleFSM/)
 INC_PATHS += -I$(abspath FreeRTOS/Source/include/)
 INC_PATHS += -I$(abspath SEGGER/)
 

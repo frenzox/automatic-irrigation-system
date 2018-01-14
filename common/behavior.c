@@ -1,10 +1,15 @@
 #include "hal.h"
+#include "FreeRTOS.h"
 #include "SimpleFSM.h"
+#include "timers.h"
+#include "task.h"
 
 #include "behavior.h"
 
 #define DRY_SOIL_LIMIT  800
 #define WET_SOIL_LIMIT  1500 
+
+SimpleFSM irrigation_machine;
 
 STATE(IDLE) {
     if(FIRST) {
@@ -74,9 +79,9 @@ STATE(IRRIGATING_BOTTOM) {
         NEXT_STATE(IDLE);
 }
 
-void system_state_machine_task(void *pvParameters) {
+void behavior_task(void *pvParameters) {
 
-    INIT(irrigation_machine);
+    INIT(irrigation_machine, IDLE);
 
     for(;;) {
         EXEC(irrigation_machine);
