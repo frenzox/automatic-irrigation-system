@@ -23,8 +23,8 @@ int main() {
     adc_init();
 
     xTaskCreate(blink_task, "blink_task", 128, NULL, 1, NULL);
-    vTaskStartScheduler();
 
+    vTaskStartScheduler();
     return 0;
 }
 

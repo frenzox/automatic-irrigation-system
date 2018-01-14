@@ -1,0 +1,3 @@
+[submodule "lib/SimpleFSM"]
+	path = lib/SimpleFSM
+	url = https://github.com/frenzox/SimpleFSM
