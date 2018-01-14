@@ -11,7 +11,7 @@ void blink_task(void *pvParameters) {
         printf("SENSOR 1 VALUE: %d\n", sensor_value);
         sensor_value = read_analog_input(1);
         printf("SENSOR 2 VALUE: %d\n", sensor_value);
-        vTaskDelay(1000/portTICK_PERIOD_MS);
+        vTaskDelay(500/portTICK_PERIOD_MS);
     }
 
     vTaskDelete(NULL);
@@ -23,8 +23,8 @@ int main() {
     adc_init();
 
     xTaskCreate(blink_task, "blink_task", 128, NULL, 1, NULL);
-    vTaskStartScheduler();
 
+    vTaskStartScheduler();
     return 0;
 }
 

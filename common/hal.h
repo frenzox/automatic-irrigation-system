@@ -2,6 +2,11 @@
 #define HAL_H
 #include "stm32f1xx.h"
 
+#define TOP_SENSOR      0
+#define BOTTOM_SENSOR   1
+#define TOP_VALVE       0
+#define BOTTOM_VALVE    1
+
 void init_hal();
 void printf(const char *format, ...);
 void turn_pin(uint32_t pin, uint32_t status);

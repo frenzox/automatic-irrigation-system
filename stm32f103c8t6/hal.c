@@ -71,10 +71,6 @@ int32_t read_analog_input(uint32_t pin) {
     return sensors[pin];
 }
 
-int32_t read_top_moisture_sensor() {
-    return ADC1->DR & 0xFFF;
-}
-
 void init_hal() {
     gpio_init();
     dma_init();
