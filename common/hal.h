@@ -5,8 +5,8 @@
 #define PUMP            5
 #define TOP_SENSOR      0
 #define BOTTOM_SENSOR   1
-#define TOP_VALVE       0
-#define BOTTOM_VALVE    1
+#define TOP_VALVE       6
+#define BOTTOM_VALVE    7
 
 void init_hal();
 void printf(const char *format, ...);
