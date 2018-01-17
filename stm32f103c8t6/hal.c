@@ -64,7 +64,7 @@ void dma_init() {
 
 void gpio_init() {
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
-    GPIOA->CRL = (1 << 20); // SET OUTPUT MODE
+    GPIOA->CRL = (1 << 20) | (1 << 24) | (1 << 28); // SET OUTPUT MODE
 }
 
 int32_t read_analog_input(uint32_t pin) {
