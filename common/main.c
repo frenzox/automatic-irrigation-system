@@ -9,7 +9,7 @@ int main() {
     init_hal();
     adc_init();
 
-    xTaskCreate(behavior_task, "blink_task", 128, NULL, 1, NULL);
+    xTaskCreate(behavior_task, "behavior_task", 128, NULL, 1, NULL);
 
     vTaskStartScheduler();
     return 0;
