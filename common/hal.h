@@ -1,6 +1,5 @@
 #ifndef HAL_H
 #define HAL_H
-#include "stm32f1xx.h"
 
 #define PUMP            5
 #define TOP_SENSOR      0
